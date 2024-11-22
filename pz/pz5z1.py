@@ -13,6 +13,6 @@ def process_number(n):
     return steps
 
 # Пример использования:
-number = 34445  # Заданное число
+number = 19  # Заданное число
 steps = process_number(number)
 print(f"Количество операций до нуля для числа {number}: {steps}")
