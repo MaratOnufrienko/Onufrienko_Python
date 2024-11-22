@@ -19,7 +19,7 @@ while True:
 #Вычисляем приближенное значение sin(X) через ряд Тейлора
 sin_approx = 0
 for k in range(N + 1):
-    term = ((-1) - k * X * (2 * k + 1)) / math.factorial(2 * k + 1)
+    term = ((-1) ** k * X ** (2 * k + 1)) / math.factorial(2 * k + 1)
     sin_approx += term
 
 print("Приближенное значение sin(X):", sin_approx)
