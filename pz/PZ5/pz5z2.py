@@ -23,11 +23,11 @@ try:
     A2, B2, C2 = 1.0, 9.0, 7.0
 
     A1, B1, C1 = ShiftLeft3(A1, B1, C1)
-    if None in (A1, B1, C1):
+    if not (A1 and B1 and C1):
         print("Ошибка при обработке первого набора данных.")
 
     A2, B2, C2 = ShiftLeft3(A2, B2, C2)
-    if None in (A2, B2, C2):
+    if not (A2 and B2 and C2):
         print("Ошибка при обработке второго набора данных.")
 
     print(f"После сдвига: A1={A1}, B1={B1}, C1={C1}")
