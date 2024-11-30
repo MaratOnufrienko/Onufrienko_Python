@@ -9,7 +9,7 @@ def ShiftLeft3(A, B, C):
         for x in [A, B, C]:
             if type(x) not in [int, float]:
                 print("Все параметры должны быть числами (int или float).")
-                return
+                return None, None, None
         A, B, C = B, C, A  # Левый циклический сдвиг
     except Exception as e:
         print(f"Произошла ошибка при выполнении сдвига: {e}")
