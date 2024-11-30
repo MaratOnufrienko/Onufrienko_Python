@@ -4,6 +4,14 @@ import math
 
 #Запрашиваем у пользователя вод данных
 X = float(input("Введите значение X: "))
+while type(X) != float:
+    try:
+        X = float(X)
+        if X < 0:
+            print("Число должно быть больше 0")
+            X = float(input("Введите значение X: "))
+    except ValueError:
+        X = float(input("Введите значение X: "))
 N = input("Введите значение N (целое и больше 0): ")
 
 #Обрабатываем исключения для N

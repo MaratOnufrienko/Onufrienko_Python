@@ -13,27 +13,23 @@ def process_number(n):
     try:
         while n != 0:
             n -= sum_of_digits(n)
-            print(n)
             steps += 1
     except Exception as e:
         print(f"Произошла ошибка: {e}")
         return None  # Возвращаем None, если произошла ошибка
     return steps
 
-def main():
+# Запрашиваем число у пользователя
+number = input("Введите целое число: ")
+while type(number) != int:
     try:
-        # Запрашиваем число у пользователя
-        number = int(input("Введите целое число: "))
+        number = int(number)
         if number < 0:
-            raise ValueError("Число должно быть неотрицательным.")
-        steps = process_number(number)
-        if steps is not None:
-            print(f"Количество операций до нуля для числа {number}: {steps}")
-    except ValueError as ve:
-        print(f"Ошибка ввода: {ve}")
-    except Exception as e:
-        print(f"Неожиданная ошибка: {e}")
-
-# Запуск программы
-if __name__ == "__main__":
-    main()
+            print("Число должно быть больше 0")
+            number = input("Введите целое число: ")
+    except ValueError:
+        number = input("Введите целое число: ")
+        
+steps = process_number(number)
+if steps:
+    print(f"Количество операций до нуля для числа {number}: {steps}")

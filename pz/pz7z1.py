@@ -9,7 +9,6 @@ def determine_number_type(s):
             return 1
     except ValueError:
         return 0
-
 # Пример использования
 examples = ["623", "4.67", "abob", "12.0.1"]
 for ex in examples:
