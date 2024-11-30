@@ -9,7 +9,12 @@ while type(a) != int:
     except ValueError: 
         a = input("Введите значение A: ")
         
-b = int(input("Введите значение B: "))
+b = input("Введите значение B: ")
+while type(b) != int:
+    try:
+        b = int(b)
+    except ValueError:
+        b = input("Введите значение B: ")
 
 #Проверяем равенства
 if a != b:
