@@ -24,10 +24,6 @@ def main():
         result = count_unique_elements(lst)
         if result is not None:
             print(f"Количество уникальных элементов: {result}")
-        
-        # Пример некорректного ввода
-        lst_invalid = [2, 2, [3, 4], 5]  # Список с изменяемым элементом
-        print(f"Количество уникальных элементов: {count_unique_elements(lst_invalid)}")
     except Exception as e:
         print(f"Неожиданная ошибка: {e}")
 
