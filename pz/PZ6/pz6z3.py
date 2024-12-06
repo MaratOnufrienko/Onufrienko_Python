@@ -11,6 +11,13 @@ def reorder_last_element(arr):
             return None
         
         # Проверка содержимого списка
+
+        # lst = []
+        # for x in arr:
+        #     lst.append(isinstance(x, (int, float)))
+        # return lst
+        # all(lst); lst = [True, True, True, True] -> True
+
         if not all(isinstance(x, (int, float)) for x in arr):
             print("Ошибка: Список должен содержать только числа (int или float).")
             return None
@@ -39,8 +46,20 @@ def reorder_last_element(arr):
 
 def main():
     try:
-        lst = [1, 2, 3, 5, 4]
-        result = reorder_last_element(lst)
+        import random
+        lst = []
+        number = input("Введите целое число: ")
+        while type(number) != int:
+            try:
+                number = int(number)
+                if number < 0:
+                    print("Число должно быть больше 0")
+                    number = input("Введите целое число: ")
+            except ValueError:
+                number = input("Введите целое число: ")
+        for i in range(number):
+            lst.append(random.randint(1, 100))
+        result = reorder_last_element(sorted(lst))
         if result is not None:
             print(f"Упорядоченный список: {result}")
 

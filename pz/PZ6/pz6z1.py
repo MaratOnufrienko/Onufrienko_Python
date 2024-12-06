@@ -1,11 +1,7 @@
+#Дан список размера N и целые числа K и L (1 < K < L < N). Найти сумму элементов списка с номерами от K до L включительно.
+import random
+
 def sum_between_k_l(arr, k, l):
-    """
-    Найти сумму элементов списка с номерами от K до L включительно.
-    :param arr: Список элементов.
-    :param k: Начальный индекс (1 < K < L <= len(arr)).
-    :param l: Конечный индекс.
-    :return: Сумма элементов от K до L.
-    """
     try:
         # Проверка на корректность аргументов
         if not isinstance(arr, list):
@@ -21,27 +17,49 @@ def sum_between_k_l(arr, k, l):
             return None
 
         # Вычисление суммы
-        return sum(arr[k-1:l])  # Индексы в Python начинаются с 0
+        return sum(arr[k:l+1])  # Индексы в Python начинаются с 0
     except Exception as e:
         print(f"Произошла ошибка при вычислении суммы: {e}")
         return None
 
+lst = []   
 
-def main():
+number = input("Введите кол-во элементов списка: ")
+while type(number) != int:
     try:
-        # Пример данных
-        lst = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        k, l = 5, 9  # Заданные индексы
+        number = int(number)
+        if number < 0:
+            print("Число должно быть больше 0")
+            number = input("Введите целое число: ")
+    except ValueError:
+        number = input("Введите целое число: ")
+for i in range(number):
+    lst.append(random.randint(1, 100))
 
+k = input("Введите k: ")
+while type(k) != int:
+    try:
+        k = int(k)
+        if k < 0:
+            print("Число должно быть больше 0")
+            k = input("Введите k: ")
+    except ValueError:
+        k = input("Введите k: ")
+    
+l = input("Введите l: ")
+while type(l) != int:
+    try:
+        l = int(l)
+        if l < 0:
+            print("Число должно быть больше 0")
+            l = input("Введите l: ")
+    except ValueError:
+        l = input("Введите l: ")
+        
         result = sum_between_k_l(lst, k, l)
         if result is not None:
             print(f"Сумма элементов от {k} до {l}: {result}")
         else:
             print("Не удалось вычислить сумму из-за ошибки.")
-    except Exception as e:
-        print(f"Неожиданная ошибка: {e}")
-
-
-# Запуск программы
-if __name__ == "__main__":
-    main()
+print(lst)
+print(sum_between_k_l(lst, k, l))
