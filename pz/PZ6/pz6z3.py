@@ -39,7 +39,6 @@ def reorder_last_element(arr):
 
 def main():
     try:
-        # Пример корректного списка
         lst = [1, 2, 3, 5, 4]
         result = reorder_last_element(lst)
         if result is not None:
