@@ -45,11 +45,6 @@ def main():
         if result is not None:
             print(f"Упорядоченный список: {result}")
 
-        # Пример некорректного ввода
-        lst_invalid = [1, 2, "f", 5, 4]  # Список с некорректным элементом
-        result_invalid = reorder_last_element(lst_invalid)
-        if result_invalid is not None:
-            print(f"Упорядоченный список: {result_invalid}")
     except Exception as e:
         print(f"Неожиданная ошибка: {e}")
 
