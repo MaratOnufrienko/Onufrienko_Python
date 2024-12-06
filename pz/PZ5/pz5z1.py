@@ -3,18 +3,6 @@
 def sum_of_digits(n):
     """Возвращает сумму цифр числа n"""
     return sum(int(digit) for digit in str(abs(n)))
-
-"""
--983 -> abs
-983
-"983"
-"9" -> int  + result
-"8" -> int  + result
-"3" -> int  + result
-[9, 8, 3]
-
--> result
-"""
 def process_number(n):
     """
     Вычитает сумму цифр из числа до тех пор, пока результат не станет равным нулю.
