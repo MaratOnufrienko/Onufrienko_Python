@@ -8,7 +8,7 @@ def count_unique_elements(arr: list):
     return els
 
 # набор данных
-lst = [2, 2, 2, 3, 4, 5]  
+lst = [2, 2, 3, 4, 5, 6, 7, 7]  
 result = count_unique_elements(lst)
 if result is not None:
     print(f"Количество уникальных элементов: {result}")
