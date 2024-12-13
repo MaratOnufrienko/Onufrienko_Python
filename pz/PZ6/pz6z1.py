@@ -33,6 +33,7 @@ while type(number) != int:
             number = input("Введите целое число: ")
     except ValueError:
         number = input("Введите целое число: ")
+
 for i in range(number):
     lst.append(random.randint(1, 100))
 
