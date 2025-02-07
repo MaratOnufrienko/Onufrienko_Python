@@ -17,8 +17,6 @@ def transform_words(s):
         new_word += last_char
         transformed_words.append(new_word)
     return transformed_words
-
-# Пример использования
 sentence = "МИНИМУМ АВАТА"
 ws = transform_words(sentence)
 for word in ws:

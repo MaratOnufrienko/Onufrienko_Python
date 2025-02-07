@@ -2,7 +2,7 @@
 #вещественного (с дробной частью) — вывести 2; если строку нельзя преобразовать 
 #в число, то вывести 0. Считать, что дробная часть вещественного числа отделяется 
 #от его целой части десятичной точкой «.».
-def determine_number_type(a):
+def abobus(a):
     try:
         if '.' in a:
             float(a)
@@ -12,7 +12,6 @@ def determine_number_type(a):
             return 1
     except ValueError:
         return 0
-# Пример использования
 primer = ["623", "4.67", "abob", "12.0.1"]
 for ex in primer:
-    print(f"'{ex}' -> {determine_number_type(ex)}")
+    print(f"'{ex}' -> {abobus(ex)}")
