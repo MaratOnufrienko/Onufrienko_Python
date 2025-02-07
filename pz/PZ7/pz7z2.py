@@ -1,17 +1,25 @@
+#Дана строка, состоящая из русских слов, набранных заглавными буквами и 
+#разделенных пробелами (одним или несколькими). Преобразовать каждое слово в 
+#строке, заменив в нем все предыдущие вхождения его последней буквы на символ 
+#«.» (точка). Например, слово «МИНИМУМ» надо преобразовать в «.ИНИ.УМ». 
+#Количество пробелов между словами не изменять
 def transform_words(s):
-    """
-    Преобразует каждое слово строки, заменяя все предыдущие вхождения последней буквы на '.'.
-    :param s: Входная строка из русских слов, разделенных пробелами.
-    :return: Преобразованная строка.
-    """
     words = s.split()
     transformed_words = []
     for word in words:
         last_char = word[-1]
-        new_word = ''.join('.' if c == last_char else c for c in word[:-1]) + last_char
+        new_word = ""
+        for c in word[:-1]:
+            if c == last_char:
+                new_word += "."
+            else:
+                new_word += c
+        new_word += last_char
         transformed_words.append(new_word)
-    return ' '.join(transformed_words)
+    return transformed_words
 
 # Пример использования
-sentence = "МИНИМУМ"
-print(transform_words(sentence))
+sentence = "МИНИМУМ АВАТА"
+ws = transform_words(sentence)
+for word in ws:
+    print(word)
