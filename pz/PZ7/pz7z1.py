@@ -14,4 +14,4 @@ def abobus(a):
         return 0
 primer = ["623", "4.67", "abob", "12.0.1"]
 for e in primer:
-    print(f"'{ex}' -> {abobus(ex)}")
+    print(f"'{e}' -> {abobus(e)}")
