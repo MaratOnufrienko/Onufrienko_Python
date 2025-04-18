@@ -3,7 +3,7 @@
 # каждому авто, всех моделей словаря.
 
 avto = {
-    "Lada": ["Vesta", "Kalina", "Huinia"],
+    "Lada": ["Vesta", "Kalina", "Nyancat"],
     "Wolkswagen": ["Tiguan", "Yaneznayubolshe", "Marka3"],
     "Hundai": ["Solaris", "Goyda", "Abayunda"],
 }

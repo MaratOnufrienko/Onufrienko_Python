@@ -12,6 +12,6 @@ def abobus(a):
             return 1
     except ValueError:
         return 0
-primer = ["623", "4.67", "abob", "12.0.1"]
+primer = ["623", "36", "abob", "12.04.11"]
 for e in primer:
     print(f"'{e}' -> {abobus(e)}")
