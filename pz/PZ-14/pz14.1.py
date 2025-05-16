@@ -2,7 +2,7 @@
 # Посчитать их количество.
 
 import re
-text = open("pazzl.html", "r+", encoding="utf-8").read()
+text = open("D:\manakova\pz\PZ-14\pazzl.html", "r+", encoding="utf-8").read()
 
 ex = re.compile(r"<img\b[^>]*>", re.IGNORECASE)
 print(ex.findall(text))
