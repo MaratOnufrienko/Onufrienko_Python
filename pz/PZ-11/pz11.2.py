@@ -3,9 +3,7 @@
 # который поместить текст в стихотворной форме предварительно заменив символы верхнего
 # регистра на нижний.
 
-import string
-
-f = open("11.2.txt", "r", encoding="utf-8")
+f = open(r"D:\manakova\pz\PZ-11\11.2.txt", "r", encoding="utf-8")
 rl = f.readlines()
 text = "".join(rl)
 fo = open("11.2-output.txt", "w", encoding="utf-8")

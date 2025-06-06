@@ -1,1 +1,0 @@
-li = ['Kirill', 'Masha', 'Pavel', 'Artem']

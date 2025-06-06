@@ -5,13 +5,34 @@
 import sqlite3
 
 conn = sqlite3.connect("transport.db")
+cursor = conn.cursor()
 
-def execute_sql_from_file(conn, sql_file):
-    with open(sql_file, 'r', encoding='utf-8') as file:
-        sql_script = file.read()
-        cursor = conn.cursor()
-        cursor.execute(sql_script)
-        conn.commit()
+data = """
+CREATE TABLE IF NOT EXISTS transport (
+    route TEXT NOT NULL,            
+    driver_name TEXT NOT NULL,     
+    departure_date TEXT NOT NULL,
+    arrival_date TEXT NOT NULL, 
+    cargo_weight REAL NOT NULL
+)
+"""
 
-execute_sql_from_file(conn, 'code.sql')
+cursor.execute(data)
+conn.commit()
+
+# cursor.execute("sql запрос")
+# в конце conn.commit() для сохранения изменений после выполненного запроса
+
+def add():
+    cursor.execute("INSERT INTO transport VALUES (?, ?, ?, ?, ?)", (V1, V2, V3, V4, V5))
+    conn.commit()
+def edit():
+    cursor.execute("INSERT INTO transport VALUES (?, ?, ?, ?, ?)", (V1, V2, V3, V4, V5))
+    conn.commit()
+def delete():
+    cursor.execute("INSERT INTO transport VALUES (?, ?, ?, ?, ?)", (V1, V2, V3, V4, V5))
+    conn.commit()
+
+print(cursor.execute("SELECT * FROM transport").fetchall())
+
 conn.close()
