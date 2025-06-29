@@ -3,63 +3,72 @@ from tkinter import ttk
 
 root = tk.Tk()
 root.title("Регистрация")
-root.geometry("600x700")
-root.configure(bg="#f5f5f5")
+root.geometry("650x580")
+root.configure(bg="white")
+root.resizable(False, False)
 
-frame = tk.Frame(root, padx=10, pady=10, bg="white", relief="groove", borderwidth=2)
-frame.pack(pady=20)
+# Заголовок
+tk.Label(root, text="Создание нового сайта", bg="#00AEEF", fg="white",
+         font=("Arial", 16, "bold"), pady=10).pack(fill="x")
 
-tk.Label(frame, text="Создание нового сайта", font=("Arial", 16, "bold"), fg="white", bg="#00aaff", pady=10).grid(row=0, column=0, columnspan=2, sticky="we")
+form = tk.Frame(root, bg="white", padx=30, pady=15)
+form.pack(fill="both", expand=True)
 
-fields = [
-    ("Email", tk.Entry),
-    ("Пароль", lambda master: tk.Entry(master, show="*")),
-    ("Имя", tk.Entry),
-    ("Фамилия", tk.Entry),
-    ("Никнейм", tk.Entry),
-]
+# Универсальная функция создания строки ввода
+def create_input(label_text, row):
+    tk.Label(form, text=label_text, bg="white", anchor="w",
+             font=("Arial", 10)).grid(row=row, column=0, sticky="w", pady=5)
+    entry = tk.Entry(form, width=40)
+    entry.grid(row=row, column=1, padx=5, pady=5, sticky="w")
+    return entry
 
-entries = {}
-for i, (label, widget_type) in enumerate(fields, start=1):
-    tk.Label(frame, text=label, anchor="w", bg="white", fg="#0077cc").grid(row=i, column=0, sticky="w", pady=5)
-    entry = widget_type(frame)
-    entry.grid(row=i, column=1, sticky="we", pady=5)
-    entries[label] = entry
+# Поля ввода
+email_entry = create_input("Email", 0)
+password_entry = create_input("Пароль", 1)
+password_entry.config(show="*")
+name_entry = create_input("Имя", 2)
+surname_entry = create_input("Фамилия", 3)
+nick_entry = create_input("Никнейм", 4)
 
-tk.Label(frame, text="Дата рождения", anchor="w", bg="white", fg="#0077cc").grid(row=6, column=0, sticky="w", pady=5)
-dob_frame = tk.Frame(frame, bg="white")
-dob_frame.grid(row=6, column=1, sticky="w")
+# Дата рождения
+tk.Label(form, text="Дата рождения", bg="white",
+         font=("Arial", 10)).grid(row=5, column=0, sticky="w", pady=5)
 
-day = ttk.Combobox(dob_frame, width=4, values=[str(i) for i in range(1, 32)])
-month = ttk.Combobox(dob_frame, width=8, values=[
-    "Янв", "Фев", "Мар", "Апр", "Май", "Июн",
-    "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"
-])
-year = ttk.Combobox(dob_frame, width=6, values=[str(i) for i in range(1950, 2025)])
+dob_frame = tk.Frame(form, bg="white")
+dob_frame.grid(row=5, column=1, sticky="w")
 
-day.grid(row=0, column=0)
-month.grid(row=0, column=1, padx=5)
-year.grid(row=0, column=2)
+days = ttk.Combobox(dob_frame, values=[str(i) for i in range(1, 32)], width=3)
+months = ttk.Combobox(dob_frame, values=[str(i) for i in range(1, 13)], width=3)
+years = ttk.Combobox(dob_frame, values=[str(i) for i in range(1950, 2026)], width=5)
+days.grid(row=0, column=0, padx=2)
+months.grid(row=0, column=1, padx=2)
+years.grid(row=0, column=2, padx=2)
 
-tk.Label(frame, text="Пол", anchor="w", bg="white", fg="#0077cc").grid(row=7, column=0, sticky="w", pady=5)
-gender = tk.StringVar()
-tk.Radiobutton(frame, text="Мужчина", variable=gender, value="Мужчина", bg="white").grid(row=7, column=1, sticky="w")
-tk.Radiobutton(frame, text="Женщина", variable=gender, value="Женщина", bg="white").grid(row=7, column=1)
+# Пол
+tk.Label(form, text="Пол", bg="white",
+         font=("Arial", 10)).grid(row=6, column=0, sticky="w", pady=5)
 
-tk.Label(frame, text="Место проживания", anchor="w", bg="white", fg="#0077cc").grid(row=8, column=0, sticky="w", pady=5)
-location = ttk.Combobox(frame, values=["Москва", "Санкт-Петербург", "Другой город..."])
-location.grid(row=8, column=1, sticky="we")
+gender_var = tk.StringVar(value="Мужчина")
+gender_frame = tk.Frame(form, bg="white")
+gender_frame.grid(row=6, column=1, sticky="w")
+tk.Radiobutton(gender_frame, text="Мужчина", variable=gender_var, value="Мужчина", bg="white").pack(side="left", padx=5)
+tk.Radiobutton(gender_frame, text="Женщина", variable=gender_var, value="Женщина", bg="white").pack(side="left", padx=5)
 
-tk.Label(frame, text="Код безопасности", anchor="w", bg="white", fg="#0077cc").grid(row=9, column=0, sticky="w", pady=5)
-security_code = tk.Entry(frame)
-security_code.grid(row=9, column=1, sticky="we")
+# Место проживания
+tk.Label(form, text="Место проживания", bg="white",
+         font=("Arial", 10)).grid(row=7, column=0, sticky="w", pady=5)
 
-accept = tk.IntVar()
-tk.Checkbutton(frame, text="Подтверждаю условия использования", variable=accept, bg="white").grid(row=10, column=0, columnspan=2, pady=10)
+city_combo = ttk.Combobox(form, values=["Другой город...", "Москва", "Казань", "Минск"])
+city_combo.grid(row=7, column=1, sticky="w", pady=5)
 
-tk.Button(frame, text="Регистрация", bg="#0077cc", fg="white", font=("Arial", 10, "bold")).grid(row=11, column=0, columnspan=2, pady=10)
+# Чекбокс
+check_var = tk.IntVar()
+tk.Checkbutton(form,
+               text="Подтверждаю условия использования UID сообщества",
+               variable=check_var, bg="white").grid(row=8, column=1, sticky="w", pady=10)
 
-for i in range(2):
-    frame.columnconfigure(i, weight=1)
+# Кнопка регистрации
+tk.Button(root, text="Регистрация", bg="#007BCE", fg="white", font=("Arial", 12, "bold"),
+          padx=20, pady=5).pack(pady=10)
 
 root.mainloop()

@@ -21,5 +21,8 @@ class Student:
 
 st1 = Student("Игорь", "Лусенков", [5, 4, 5, 4, 5, 5, 5])
 st2 = Student("Владислав", "Дуров", [5, 5, 5, 5, 5, 5, 5])
+st3 = Student("Мария", "Соколова", [4, 4, 4, 5, 4, 4, 5])
+
 st1.display_info()
 st2.display_info()
+st3.display_info()
